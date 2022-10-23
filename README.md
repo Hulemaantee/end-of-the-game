@@ -30,7 +30,6 @@ REST - hierarchical resources
     - PUT http method - full update - replace
     - PATCH http method - partial update
 
-
 Project plan
 Topic: Home budget
 Technologies:
