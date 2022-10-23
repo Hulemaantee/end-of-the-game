@@ -10,6 +10,26 @@ HTTP request and response
   - cookies
   - body of the response
 
+REST - hierarchical resources
+- CRUD (eg. incomes)
+  - Read all
+    - url: /incomes
+    - GET http method
+    - return:
+- Read one item
+  - url: /incomes/{id}
+  - GET http method
+  - Create:
+    - url: /incomes
+    - POST http method
+  - Delete:
+    - url: /incomes/{id}
+    - DELETE http method
+  - Update:
+    - url: /incomes/{id}
+    - PUT http method - full update - replace
+    - PATCH http method - partial update
+
 
 Project plan
 Topic: Home budget
