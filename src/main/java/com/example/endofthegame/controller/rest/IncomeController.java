@@ -14,11 +14,11 @@ import java.util.List;
 @RestController
 @Slf4j
 @RequestMapping("/api")
-public class IncomesController {
+public class IncomeController {
 
     private final IncomesService service;
 
-    public IncomesController(IncomesService service) {
+    public IncomeController(IncomesService service) {
         this.service = service;
     }
 
@@ -31,16 +31,9 @@ public class IncomesController {
     }
 
     @GetMapping("/incomes/{id}")
-    public ResponseEntity<Income> getIncomeById(@PathVariable("id") Long idOfIncome) {
+    public Income getIncomeById(@PathVariable("id") Long idOfIncome) {
         log.info("trying to get income with id: [{}]", idOfIncome);
-
-        Income fromRepo = service.readIncomeById(idOfIncome);
-
-        if (fromRepo != null) {
-            return ResponseEntity.ok(fromRepo);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return service.readIncomeByIdBetterWay(idOfIncome);
     }
 
 
