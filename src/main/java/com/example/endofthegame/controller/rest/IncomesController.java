@@ -3,6 +3,7 @@ package com.example.endofthegame.controller.rest;
 import com.example.endofthegame.entity.Income;
 import com.example.endofthegame.service.IncomesService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,9 +31,17 @@ public class IncomesController {
     }
 
     @GetMapping("/incomes/{id}")
-    public Income getIncomeById(@PathVariable("id") Long idOfIncome) {
+    public ResponseEntity<Income> getIncomeById(@PathVariable("id") Long idOfIncome) {
         log.info("trying to get income with id: [{}]", idOfIncome);
-        return null;
+
+        Income fromRepo = service.readIncomeById(idOfIncome);
+
+        if (fromRepo != null) {
+            return ResponseEntity.ok(fromRepo);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
+
 
 }
