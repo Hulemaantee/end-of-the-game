@@ -3,11 +3,9 @@ package com.example.endofthegame.controller.rest;
 import com.example.endofthegame.entity.Income;
 import com.example.endofthegame.service.IncomesService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +32,14 @@ public class IncomeController {
     public Income getIncomeById(@PathVariable("id") Long idOfIncome) {
         log.info("trying to get income with id: [{}]", idOfIncome);
         return service.readIncomeByIdBetterWay(idOfIncome);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/incomes/{id}")
+    public void deleteIncomeById(@PathVariable("id") Long idOfIncome) {
+        log.info("trying to delete income with id: [{}]", idOfIncome);
+
+        service.deleteIncomeWithId(idOfIncome);
     }
 
 

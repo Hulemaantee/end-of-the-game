@@ -16,6 +16,7 @@ import java.time.ZonedDateTime;
 public class Income {
         // TODO: improve generation of ID
         @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         Long id;
         @Enumerated(EnumType.STRING)
         IncomeCategory category;
