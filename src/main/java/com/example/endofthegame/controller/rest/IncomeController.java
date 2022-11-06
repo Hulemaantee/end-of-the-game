@@ -4,7 +4,6 @@ import com.example.endofthegame.entity.Income;
 import com.example.endofthegame.service.IncomesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,7 +38,7 @@ public class IncomeController {
     public void deleteIncomeById(@PathVariable("id") Long idOfIncome) {
         log.info("trying to delete income with id: [{}]", idOfIncome);
 
-        service.deleteIncomeWithId(idOfIncome);
+        service.deleteIncomeWithIdBetterWay(idOfIncome);
     }
 
 

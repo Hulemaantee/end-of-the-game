@@ -6,6 +6,7 @@ import com.example.endofthegame.repository.IncomesRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -72,6 +73,17 @@ public class IncomesService {
         } catch (EmptyResultDataAccessException exc) {
             log.warn("Trying to delete non existent income", exc);
             throw new IncomeNotFoundException("No existing income", exc);
+        }
+    }
+
+    @Transactional
+    public void deleteIncomeWithIdBetterWay(Long id) {
+        log.info("deleting income with id: [{}]", id);
+
+        if( repository.existsById(id)) {
+            repository.deleteById(id);
+        } else {
+            throw new IncomeNotFoundException("No existing income with id: [%d]".formatted(id));
         }
     }
 
