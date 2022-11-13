@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @Slf4j
 @RequestMapping("/api")
+@CrossOrigin("*")
 public class IncomeController {
 
     private final IncomesService service;
