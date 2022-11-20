@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {expenseList, homeUrl, incomeList} from "../../models/urls";
 
 @Component({
   selector: 'app-navigation-bar',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation-bar.component.css']
 })
 export class NavigationBarComponent implements OnInit {
+
+  home = homeUrl
+  incomes = incomeList
+  expenses = expenseList
 
   constructor() { }
 
